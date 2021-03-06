@@ -1,6 +1,7 @@
 import requests
 import os.path
 from pathlib import Path
+from bokeh.plotting import gridplot
 
 def get_jhu_cached(date):
     formatted_date = date.strftime('%m-%d-%Y')
@@ -11,3 +12,17 @@ def get_jhu_cached(date):
         r = requests.get(url, allow_redirects=True)
         open(path, 'wb').write(r.content)
     return path
+
+def create_grid(graphs, columns=6, **kwargs):
+    grid = []
+    current_row = []
+    i = 1
+    for graph in graphs:
+        current_row.append(graph)
+        if i % columns == 0:
+            grid.append(current_row)
+            current_row = []
+        i += 1
+    if len(current_row) > 0:
+        grid.append(current_row)
+    return gridplot(grid, **kwargs)
