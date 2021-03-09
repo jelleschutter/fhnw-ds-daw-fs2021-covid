@@ -1,7 +1,9 @@
 # FHNW Data Science Mini-Challenge COVID-19
 [![Open in Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jelleschutter/fhnw-ds-daw-fs2021-covid/blob/main/data_pipeline.ipynb)
 
-This Mini-Challenge was completed as part of the "Data Wrangling" course. We were tasked with building a data pipeline which create two clean data frames with the following daily data:
+This Mini-Challenge was completed as part of the "Data Wrangling" course.
+
+We were tasked with building a data pipeline which creates two clean data frames with the following daily data:
 - per country (Global)
   - new cases
   - total cases
