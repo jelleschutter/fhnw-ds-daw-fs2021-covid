@@ -18,14 +18,16 @@ jobs:
           python-version: '3.8'
 
       - name: Install Jupyter
-        run: pip install notebook
+        run: |
+          pip install notebook
+          pip install nbconvert-theme-pale-sand-navy
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Generate HTML
         run: |
-          jupyter nbconvert --execute --to html --output-dir dist data_pipeline.ipynb
+          jupyter nbconvert --execute --to html --template pale-sand-navy --output-dir dist data_pipeline.ipynb
           mv dist/data_pipeline.html dist/index.html
 
       - name: Publish to GH Pages
