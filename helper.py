@@ -2,6 +2,7 @@ import requests
 import os.path
 from pathlib import Path
 from bokeh.plotting import gridplot
+from bokeh.models import HoverTool
 
 def get_jhu_cached(date):
     formatted_date = date.strftime('%m-%d-%Y')
@@ -26,3 +27,13 @@ def create_grid(graphs, columns=6, **kwargs):
     if len(current_row) > 0:
         grid.append(current_row)
     return gridplot(grid, **kwargs)
+
+def get_bokeh_tools(tooltips=[]):
+    hover = HoverTool(
+        tooltips=tooltips,
+        formatters={
+            '@x': 'datetime'
+        }
+    )
+
+    return ['pan', hover, 'box_zoom', 'wheel_zoom', 'save', 'reset']
